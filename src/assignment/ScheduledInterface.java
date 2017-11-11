@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assignment;
+package scheduledorders;
 
 /**
  *
  * @author Andy
  */
-public class Assignment {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public interface ScheduledInterface {
+    
+    public void setTime (int time);
+    public int getTime ();
+    
+    public ScheduledInterface addSchedule(ScheduledInterface time);
     
 }
