@@ -33,10 +33,7 @@ public class customerOrderInterface extends javax.swing.JFrame {
         createConnection();
         initComponents();
         txtCusID.setEditable(false);
-        //generate Customer ID
-//         String CurrentCustID = "C1000";
-//        String newCustID = "C" + (Integer.parseInt(CurrentCustID.substring(1,CurrentCustID.length()))+1);
-         txtCusID.setText(generateCustomerID());
+        txtCusID.setText(generateCustomerID());
     }
   public void createConnection()
     {
