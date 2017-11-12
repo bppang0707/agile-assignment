@@ -5,6 +5,7 @@
  */
 package scheduledorders;
 
+import CustomerOrder.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -201,6 +202,8 @@ public class ScheduledOrders extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null, "Your order will be delivered on " + "\nTime: " + jcbTime.getSelectedItem()
                 + "\nDate: " + tomorrow);
+        customerOrderInterface interface1 = new customerOrderInterface();
+        interface1.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
