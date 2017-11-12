@@ -20,6 +20,7 @@ public class customerOrderInterface extends javax.swing.JFrame {
     private String host = "jdbc:derby://localhost:1527/CustomerOrder";
     private String user = "nbuser";
     private String password = "nbuser";
+    private String tableName = "CustomerOrder";
     private Connection conn;
     private PreparedStatement stmt;
     /**
@@ -31,6 +32,11 @@ public class customerOrderInterface extends javax.swing.JFrame {
     public customerOrderInterface() {
         createConnection();
         initComponents();
+        txtCusID.setEditable(false);
+        //generate Customer ID
+//         String CurrentCustID = "C1000";
+//        String newCustID = "C" + (Integer.parseInt(CurrentCustID.substring(1,CurrentCustID.length()))+1);
+         txtCusID.setText(generateCustomerID());
     }
   public void createConnection()
     {
@@ -89,7 +95,7 @@ public class customerOrderInterface extends javax.swing.JFrame {
 
         lblQuantity.setText("Quantity :");
 
-        sQuantity.setModel(new javax.swing.SpinnerNumberModel(0, null, 100, 1));
+        sQuantity.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
 
         jbtnNext.setText("Next");
         jbtnNext.addActionListener(new java.awt.event.ActionListener() {
@@ -124,11 +130,6 @@ public class customerOrderInterface extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(btnAdd)
-                        .addGap(708, 708, 708)
-                        .addComponent(jbtnNext))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,8 +148,14 @@ public class customerOrderInterface extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtCusID, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(92, 92, 92)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(187, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(188, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(btnAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnNext)
+                        .addGap(290, 290, 290))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,9 +194,7 @@ public class customerOrderInterface extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,11 +211,10 @@ public class customerOrderInterface extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        
-           
-            
+    
+
        
-         String custID = txtCusID.getText();
+        String custID = txtCusID.getText();
         String restaurant = cbRestaurant.getSelectedItem().toString();
         String menuItem = cbMenuItem.getSelectedItem().toString();
         try {
@@ -326,6 +330,28 @@ public class customerOrderInterface extends javax.swing.JFrame {
       
     }//GEN-LAST:event_cbRestaurantActionPerformed
 
+    public String generateCustomerID()
+    {
+        String id = "";
+        int subID = 0;
+        try{
+            
+            String query = "SELECT MAX(CustomerID) FROM " + tableName;
+            stmt = conn.prepareStatement(query);  
+
+            ResultSet rs =stmt.executeQuery() ;
+            while(rs.next())
+            {
+                id = rs.getString(1);
+                subID=Integer.valueOf(id.substring(1,5));
+            
+            }subID++;
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        String finalID = "C" + subID;
+        return finalID; 
+    }
     /**
      * @param args the command line arguments
      */
@@ -357,6 +383,7 @@ public class customerOrderInterface extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new customerOrderInterface().setVisible(true);
+               
             }
         });
     }
