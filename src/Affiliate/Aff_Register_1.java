@@ -31,13 +31,13 @@ public class Aff_Register_1 extends javax.swing.JFrame {
 
         jtxtEmail = new javax.swing.JTextField();
         jlbPass = new javax.swing.JLabel();
-        jtxtPass = new javax.swing.JTextField();
         jlbPass_Con = new javax.swing.JLabel();
         btnContinue = new javax.swing.JButton();
-        jtxtPass_Con = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jlbEmail = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,13 +51,6 @@ public class Aff_Register_1 extends javax.swing.JFrame {
         jlbPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jlbPass.setText("Password");
 
-        jtxtPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtxtPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtPassActionPerformed(evt);
-            }
-        });
-
         jlbPass_Con.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jlbPass_Con.setText("Re-enter Password");
 
@@ -69,8 +62,6 @@ public class Aff_Register_1 extends javax.swing.JFrame {
             }
         });
 
-        jtxtPass_Con.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         btnCancel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCancel.setText("Cancel");
 
@@ -80,6 +71,10 @@ public class Aff_Register_1 extends javax.swing.JFrame {
         jlbEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jlbEmail.setText("Emaill Address");
 
+        jPasswordField1.setText("jPasswordField1");
+
+        jPasswordField2.setText("jPasswordField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,18 +82,18 @@ public class Aff_Register_1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlbPass_Con)
                     .addComponent(jlbPass)
                     .addComponent(jlbEmail)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jtxtPass_Con, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                        .addComponent(jtxtPass, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jtxtEmail, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnContinue)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancel))
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                        .addComponent(jtxtEmail, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,12 +108,12 @@ public class Aff_Register_1 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jlbPass)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(jlbPass_Con)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxtPass_Con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 41, Short.MAX_VALUE)
+                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnContinue)
                     .addComponent(btnCancel))
@@ -131,10 +126,6 @@ public class Aff_Register_1 extends javax.swing.JFrame {
     private void jtxtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtEmailActionPerformed
-
-    private void jtxtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtPassActionPerformed
 
     private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinueActionPerformed
         JOptionPane.showMessageDialog(null,"You have register successful");
@@ -242,11 +233,11 @@ public class Aff_Register_1 extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnContinue;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JLabel jlbEmail;
     private javax.swing.JLabel jlbPass;
     private javax.swing.JLabel jlbPass_Con;
     private javax.swing.JTextField jtxtEmail;
-    private javax.swing.JTextField jtxtPass;
-    private javax.swing.JTextField jtxtPass_Con;
     // End of variables declaration//GEN-END:variables
 }
