@@ -52,6 +52,8 @@ public class customerOrderInterface extends javax.swing.JFrame {
 
         lblcusIID.setText("Customer ID :");
 
+        txtCusID.setEnabled(false);
+
         lblRestaurant.setText("Restaurant  :");
 
         cbRestaurant.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Restaurant", "Outback ", "Franco(Nu Sentral)", "Built Custom Burgers", "La Juiceria", "Izumi Japanese ", "Fierce Curry House", "Nando's", "Dipndip", " " }));
