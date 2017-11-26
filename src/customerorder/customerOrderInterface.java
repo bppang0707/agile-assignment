@@ -1,8 +1,12 @@
 package CustomerOrder;
 
+import java.awt.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 import javax.swing.*;
 
 /*
@@ -23,17 +27,26 @@ public class customerOrderInterface extends javax.swing.JFrame {
     private String tableName = "CustomerOrder";
     private Connection conn;
     private PreparedStatement stmt;
+      customerorder.afterConfirmInterface next;
+      int index =0;
+
+      String custID;      
+      
+       ArrayList<String> tab;
+       ArrayList[] table = new ArrayList[100];
     /**
      * Creates new form customerOrderInterface
      */
      private int n = 0;
-     
+     private int grandtotal = 0;
      
     public customerOrderInterface() {
         createConnection();
         initComponents();
         txtCusID.setEditable(false);
         txtCusID.setText(generateCustomerID());
+        
+
     }
   public void createConnection()
     {
@@ -203,15 +216,34 @@ public class customerOrderInterface extends javax.swing.JFrame {
 
     private void jbtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNextActionPerformed
         // TODO add your handling code here:
-       
+          
+           
+        
+        
+         next = new customerorder.afterConfirmInterface(table, index);
+         next.setTab(table);
+         next.setVisible(true);
+       System.out.print(getTab());
     }//GEN-LAST:event_jbtnNextActionPerformed
 
+    public ArrayList<String> getTab() {
+        return tab;
+    }
+
+
+    public void setTab(ArrayList<String> tab) {
+        this.tab = tab;
+    }
+
+    
+    
+    
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
     
 
        
-        String custID = txtCusID.getText();
+        custID = txtCusID.getText();
         String restaurant = cbRestaurant.getSelectedItem().toString();
         String menuItem = cbMenuItem.getSelectedItem().toString();
         try {
@@ -242,13 +274,36 @@ public class customerOrderInterface extends javax.swing.JFrame {
          stmt.execute(); 
          
          JOptionPane.showMessageDialog(null, "Success");
-         
+         Random random = new Random();
+        int max = 15;
+        int min = 5;
+        int randomNumber = 0;
+        for(int counter=1; counter<=1;counter++){
+        randomNumber = random.nextInt(max + 1 - min) + min ;
+        System.out.println(randomNumber);
+        }
+          
+        String no = Integer.toString(n);
+        
+          int sub = randomNumber * value ;   
+          String subTotal = Integer.toString(sub);
+            
+            
+          tab = new ArrayList<String>();
+          tab.add(no);
+          tab.add(restaurant);
+          tab.add(menuItem);
+          tab.add(value+"");
+          tab.add(subTotal);
+          table[index++]= tab;
+       
+          
         }catch (Exception e)
         {
             JOptionPane.showMessageDialog(null, "you data is null");
         }
         
-            
+      
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void cbRestaurantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRestaurantActionPerformed
@@ -300,30 +355,6 @@ public class customerOrderInterface extends javax.swing.JFrame {
             cbMenuItem.addItem("Spicy Chicken with Edamame and Coke");
             cbMenuItem.addItem("Bolognese");
         }       
-         if(cbRestaurant.getSelectedIndex() == 6)
-        {
-            cbMenuItem.addItem("Hyderabadi Dum Chicken Biryani");
-            cbMenuItem.addItem("Butter Chicken");
-            cbMenuItem.addItem("Palak Paneer");
-            cbMenuItem.addItem("Tadka Dal");
-            cbMenuItem.addItem("Eggplant Masala");
-        }
-         if(cbRestaurant.getSelectedIndex() == 7)
-        {
-            cbMenuItem.addItem("1/4 Chicken");
-            cbMenuItem.addItem("chicken Butterfly");
-            cbMenuItem.addItem("Chicken Wrap");
-            cbMenuItem.addItem("Whole Chicken");
-            cbMenuItem.addItem("Full Platter");
-        }
-          if(cbRestaurant.getSelectedIndex() == 8)
-        {
-            cbMenuItem.addItem("Fettuccine Crepe");
-            cbMenuItem.addItem("Dipndip Crepe");
-            cbMenuItem.addItem("Brownies Crepe");
-            cbMenuItem.addItem("Cinnamon Pouch Crepe");
-            cbMenuItem.addItem("Banana Wrap Crepe");
-        }
       
     }//GEN-LAST:event_cbRestaurantActionPerformed
 
@@ -379,7 +410,8 @@ public class customerOrderInterface extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new customerOrderInterface().setVisible(true);
+                customerOrderInterface h = new customerOrderInterface();
+                h.setVisible(true);
                
             }
         });
