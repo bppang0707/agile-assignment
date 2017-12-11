@@ -5,6 +5,8 @@
  */
 package scheduledorder;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Andy
@@ -98,8 +100,18 @@ public class ViewScheduledOrders extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jButton2.setText("Done");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Done");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,6 +180,14 @@ public class ViewScheduledOrders extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JOptionPane.showMessageDialog(null, "Order for customer C0001 is completed.");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JOptionPane.showMessageDialog(null, "Welcome!\nThe Scheduled Orders made on 26/11/2017 is: 2");
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

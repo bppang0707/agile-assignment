@@ -48,10 +48,12 @@ public class PrePlanRoute extends javax.swing.JFrame {
         insertData data2 = new insertData("012-5486214", "Brian", "12345", "Indah Permai");
         insertData data3 = new insertData("013-4679451", "Caleb", "78787", "Fok Yuan");
         insertData data4 = new insertData("014-5469878", "Daniel", "11221", "Foh Sang");
+        insertData data5 = new insertData("014-5343478", "Ellen", "28288", "Menggatal");
         list.add(data1);
         list.add(data2);
         list.add(data3);
         list.add(data4);
+        list.add(data5);
         return list;
     }
     
