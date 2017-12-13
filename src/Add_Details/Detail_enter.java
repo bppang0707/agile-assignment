@@ -74,7 +74,7 @@ public class Detail_enter extends javax.swing.JFrame {
         jLabel8.setText("Address");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Continue");
+        jButton1.setText("Confirm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -100,7 +100,7 @@ public class Detail_enter extends javax.swing.JFrame {
         jtfLastName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("New Affiliates Registration");
+        jLabel1.setText("New Deliveryman Registration");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Mobile Number");
@@ -190,10 +190,10 @@ public class Detail_enter extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(jcbSalution, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                    .addComponent(jcbSalution, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +259,7 @@ public class Detail_enter extends javax.swing.JFrame {
         String lastName = jtfLastName.getText();
         String firstName = jtfFirstName.getText();
         String mobile = jtfMobile.getText();
-        String address = jtfAddr.getText()+",\n"+jtfCity.getText()+", "+jtfPoscode.getText();
+        String address = jtfAddr.getText()+jtfCity.getText()+", "+jtfPoscode.getText();
         String birthday = jcbDay.getSelectedItem().toString()+" "+jcbMonth.getSelectedItem().toString()+" "+jcbYear.getSelectedItem().toString();
         System.out.printf(salution+"\n"+staffID+"\n"+lastName+"\n"+firstName+"\n"+mobile+"\n"+address+"\n"+birthday+"\n");
         new Detail_review(salution, staffID, lastName, firstName, mobile, address, birthday).setVisible(true);
