@@ -116,6 +116,10 @@ public class retrieveCustDetail extends javax.swing.JFrame {
         {
             jTextArea1.setText("Customer ID            : C0002 \nCustomer Name     : Soo \nCustomer Address : No 10 , Jalan Ampang 3 ,Taman Ampang,Kuala Lumpur ");
         }
+       if(jTextField1.getText().equals("014-2345678"))
+        {
+            jTextArea1.setText("Customer ID            : C0003 \nCustomer Name     : Pekgy \nCustomer Address : No 43 , Jalan Ampang 1 ,Taman Ampang,Kuala Lumpur ");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
