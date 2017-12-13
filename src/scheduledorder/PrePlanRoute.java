@@ -31,12 +31,14 @@ public class PrePlanRoute extends javax.swing.JFrame {
     public String name;
     public String area;
     public String add;
+    public String time;
     
-    public insertData(String phoneNo, String name, String area, String add){
+    public insertData(String phoneNo, String name, String area, String add, String time){
         this.phoneNo = phoneNo;
         this.name = name;
         this.area = area;
         this.add = add;
+        this.time = time;
     }
                
     }
@@ -44,11 +46,17 @@ public class PrePlanRoute extends javax.swing.JFrame {
     public ArrayList List(){
         ArrayList<insertData> list = new ArrayList<insertData>();
         
-        insertData data1 = new insertData("012-5689445", "Andy", "53300", "Taman Indah");
-        insertData data2 = new insertData("012-5486214", "Brian", "12345", "Indah Permai");
-        insertData data3 = new insertData("013-4679451", "Caleb", "78787", "Fok Yuan");
-        insertData data4 = new insertData("014-5469878", "Daniel", "11221", "Foh Sang");
-        insertData data5 = new insertData("014-5343478", "Ellen", "28288", "Menggatal");
+        insertData data1 = new insertData("012-5689445", "Andy", "53300", "Taman Indah", "10:00AM");
+        insertData data2 = new insertData("012-5486214", "Brian", "12345", "Indah Permai", "11:00AM");
+        insertData data3 = new insertData("013-4679451", "Caleb", "78787", "Fok Yuan", "12:00PM");
+        insertData data4 = new insertData("014-5469878", "Daniel", "11221", "Foh Sang", "12:30PM");
+        insertData data5 = new insertData("014-5343478", "Ellen", "28288", "Menggatal", "04:00PM");
+        
+//        insertData data1 = new insertData("012-5689445", "Andy", "53300", "Taman Indah");
+//        insertData data2 = new insertData("012-5486214", "Brian", "12345", "Indah Permai");
+//        insertData data3 = new insertData("013-4679451", "Caleb", "78787", "Fok Yuan");
+//        insertData data4 = new insertData("014-5469878", "Daniel", "11221", "Foh Sang");
+//        insertData data5 = new insertData("014-5343478", "Ellen", "28288", "Menggatal");
         list.add(data1);
         list.add(data2);
         list.add(data3);
@@ -61,12 +69,13 @@ public class PrePlanRoute extends javax.swing.JFrame {
         int count = 0;
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         ArrayList<insertData> list = List();
-        Object rowData[] = new Object[4];
+        Object rowData[] = new Object[5];
         for(int i = 0; i < list.size(); i++){
             rowData[0] = list.get(i).phoneNo;
             rowData[1] = list.get(i).name;
             rowData[2] = list.get(i).area;
             rowData[3] = list.get(i).add;
+            rowData[4] = list.get(i).time;
             model.addRow(rowData);
             count++;
         }
@@ -86,6 +95,7 @@ public class PrePlanRoute extends javax.swing.JFrame {
         jtfPending = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,11 +112,11 @@ public class PrePlanRoute extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Customer Phone", "Customer Name", "Area Code", "Address"
+                "Customer Phone", "Customer Name", "Area Code", "Address", "Time"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -120,19 +130,30 @@ public class PrePlanRoute extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        jButton1.setText("Close");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfPending, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(171, Short.MAX_VALUE))
+                        .addComponent(jtfPending, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,11 +164,18 @@ public class PrePlanRoute extends javax.swing.JFrame {
                     .addComponent(jtfPending, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,6 +213,7 @@ public class PrePlanRoute extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
